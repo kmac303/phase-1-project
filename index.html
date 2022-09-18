@@ -3,14 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
-  <title>MusicBrainz SPA</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>API Search</title>
 
-  <link href="https://musicbrainz.org/ws/2/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da?fmt=json" rel="stylesheet" />
+  <style>
+    body {
+      padding: 25px;
+      background-color: white;
+      color: black;
+      font-size: 25px;
+    }
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
+  </style>
+
+  <link href="https://api.publicapis.org/entries" rel="stylesheet" />
   <link href="style.css" rel="stylesheet" />
 </head>
 <body>
   <p id="text"></p>
   <script type="text/javascript" src="index.js"></script>
+  <form>
+    <label for="category">Category:</label><br>
+    <input type="text" id="category" name="category"><br>
+    <!-- <input type="submit" value="Submit"> -->
+  </form>
+  <div>
+    <input id="submit" type="submit" value="Submit">
+</div>
+<div>
+  <button onclick="darkMode()">Darkmode</button>
+</div>
+<script defer src="./index.js"></script>
 </body>
 </html>

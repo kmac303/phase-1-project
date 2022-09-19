@@ -22,7 +22,7 @@ function displayResults(results) {
 
 //Shows text above the input field when the DOM is loaded
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById(`text`).textContent = "Search for a TV Show Below";
+    document.getElementById(`text`).textContent = "Search by Name of Any TV Show:";
   });
 
 //Runs when the "Search" button is clicked

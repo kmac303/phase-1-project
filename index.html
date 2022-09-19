@@ -5,37 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>API Search</title>
-
-  <style>
-    body {
-      padding: 25px;
-      background-color: white;
-      color: black;
-      font-size: 25px;
-    }
-    .dark-mode {
-      background-color: black;
-      color: white;
-    }
-  </style>
-
-  <link href="https://api.publicapis.org/entries" rel="stylesheet" />
+  <center>
+    <b>TV Show Search</b>
+  </center>
+  <link href="http://api.tvmaze.com/search/shows?q=${query}" rel="stylesheet" />
   <link href="style.css" rel="stylesheet" />
 </head>
+
 <body>
   <p id="text"></p>
-  <script type="text/javascript" src="index.js"></script>
-  <form>
+  <form id="test" method="post">
     <label for="category">Category:</label><br>
-    <input type="text" id="category" name="category"><br>
-    <!-- <input type="submit" value="Submit"> -->
+    <input id="category" type="text" placeholder="Type Here" name="category"/><br>
+    <button id="search" type="submit">Search</button>
   </form>
-  <div>
-    <input id="submit" type="submit" value="Submit">
-</div>
-<div>
-  <button onclick="darkMode()">Darkmode</button>
-</div>
-<script defer src="./index.js"></script>
+
+  <button onclick="darkMode()">Dark Mode</button>
+  <button onclick="lightMode()">Light Mode</button>
+  
+<br/>
+<ul id="output"></ul>
+
+<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

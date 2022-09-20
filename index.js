@@ -51,10 +51,3 @@ function lightMode() {
   element.classList.remove("dark-mode");
 }
 
-//prevents the submit button from refreshing the page when clicked
-// document.addEventListener("DOMContentLoaded", () => {
-//   document.querySelector('form').addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     console.log(e.target.value);
-//   })
-// })

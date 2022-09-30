@@ -1,41 +1,57 @@
+const txt = document.getElementById("text");
+const category = document.getElementById("category");
+const shows = document.getElementById("shows");
+
 //Searches the TV Maze API
 function searchShows(query) {
   const site = `http://api.tvmaze.com/search/shows?q=${query}`;
   fetch(site)
   .then(response => response.json())
   .then((data) => {
-    const results = data.map(tvShows => tvShows.show.name);
-    displayResults(results);
+    console.log(data);
+    const results = data.filter(tvShow => {
+      if ((tvShow.show.network) === null) {
+        return false;
+      }
+      if ((tvShow.show.url) === null) {
+        return false;
+      }
+      if ((tvShow.show.image) === null) {
+        return false;
+      }
+      return true;
+    })
+    .forEach(el => {
+      const img = el.show.image.medium;
+      const name = el.show.name;
+      const ntwrk = el.show.network.name;
+      const url = el.show.url;
+      const li = document.createElement("li");
+      li.innerText = name + " -  " + ntwrk + " - " + url;
+      let showImg = document.createElement("img")
+      showImg.src = img;
+      shows.append(li, showImg);
+    }
+    )
   })
 }
 
-//Shows results in a list
-function displayResults(results) {
-  const list = document.getElementById("output");
-  list.innerHTML = "";
-  results.forEach(showName => {
-    const element = document.createElement("li");
-    element.innerText = showName;
-    list.appendChild(element);
-  });
-}  
-
-//Shows text above the input field when the DOM is loaded
+// //Shows text above the input field when the DOM is loaded
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById(`text`).textContent = "Search by Name of Any TV Show:";
-  });
+    txt.textContent = "Search for any TV Show";
+  }); 
 
 //Runs when the "Search" button is clicked
 const form = document.getElementById('test');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const category = document.getElementById('category');
+  // const category = document.getElementById('category');
   searchShows(category.value);
 })
 
 //Logs what is being typed in the console
-const categoryField = document.getElementById('category');
-categoryField.addEventListener("change", (e) => {
+// const categoryField = document.getElementById('category');
+category.addEventListener("change", (e) => {
   console.log(e.target.value);
 });
 
@@ -50,4 +66,3 @@ function lightMode() {
   let element = document.body;
   element.classList.remove("dark-mode");
 }
-

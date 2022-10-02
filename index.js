@@ -50,7 +50,6 @@ form.addEventListener('submit', (e) => {
 })
 
 //Logs what is being typed in the console
-// const categoryField = document.getElementById('category');
 category.addEventListener("change", (e) => {
   console.log(e.target.value);
 });

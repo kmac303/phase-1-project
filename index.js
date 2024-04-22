@@ -8,7 +8,8 @@ function searchShows(query) {
   fetch(site)
   .then(response => response.json())
   .then((data) => {
-    console.log(data);
+    shows.innerHTML = '';
+    
     const results = data.filter(tvShow => {
       if ((tvShow.show.network) === null) {
         return false;
